@@ -3,6 +3,8 @@
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight, MapPin, Sparkles } from "lucide-react";
 import { profile } from "@/data/profile";
+import { openTwin } from "./Twin";
+import { Avatar } from "./Avatar";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -79,11 +81,19 @@ export function Hero() {
               Explore my journey
               <ArrowDown className="h-4 w-4 transition-transform duration-500 group-hover:translate-y-0.5" />
             </a>
+            <button
+              type="button"
+              onClick={openTwin}
+              className="group inline-flex items-center gap-2 rounded-full border border-rose/40 bg-white/60 px-6 py-3.5 text-sm font-semibold text-rose-deep backdrop-blur transition-all duration-500 hover:border-rose hover:bg-white"
+            >
+              <Sparkles className="h-4 w-4 transition-transform duration-500 group-hover:rotate-12" />
+              Ask my digital twin
+            </button>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border border-line bg-white/50 px-6 py-3.5 text-sm font-semibold text-plum backdrop-blur transition-all duration-500 hover:border-rose/50 hover:bg-white"
+              className="group inline-flex items-center gap-2 rounded-full px-4 py-3.5 text-sm font-semibold text-plum-soft transition-colors hover:text-plum"
             >
               LinkedIn
               <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -120,8 +130,8 @@ export function Hero() {
               className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[conic-gradient(from_180deg,var(--rose),var(--mauve),var(--gold),var(--rose))] opacity-70 blur-2xl"
             />
             <div className="relative">
-              <div className="flex items-center justify-between">
-                <span className="font-display text-5xl italic text-plum">A.</span>
+              <div className="flex items-start justify-between">
+                <Avatar size="xl" ring priority />
                 <Sparkles className="h-5 w-5 text-rose" />
               </div>
               <p className="eyebrow mt-8">Currently</p>

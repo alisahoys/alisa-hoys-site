@@ -7,8 +7,11 @@ export const profile = {
   location: "Hungary",
   email: "hois@protonmail.com",
   linkedin: "https://www.linkedin.com/in/alisa-hoys",
-  // Update this when the portfolio goes live (GitHub, personal portfolio, etc.)
-  portfolioUrl: "https://github.com/",
+  github: "https://github.com/alisahoys",
+  portfolioUrl: "https://github.com/alisahoys",
+  itch: "https://nerdess.itch.io/",
+  youtube: "https://www.youtube.com/@nerdess",
+  gamerTag: "Nerdess",
   cvPath: "/Alisa-Hoys-CV.pdf",
   summary:
     "I'm a Software Developer working as a Scraping Engineer at GroupBWT, where I develop and maintain web scraping workflows and work with distributed systems using Python, Scrapy, RabbitMQ, MySQL, and Docker.",
@@ -145,24 +148,104 @@ export const education = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  title: string;
+  kind: string;
+  description: string;
+  tags: string[];
+  accent: "rose" | "mauve" | "gold";
+  /** Live deployment, if any */
+  live: string | null;
+  /** Source repository, if public */
+  repo: string | null;
+  /** Cover image under /public (4:3 works best); falls back to a gradient */
+  image: string | null;
+  /** Shown as the badge when there is no live link */
+  status: "soon" | "private";
+};
+
+export type Game = {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  tags: string[];
+  /** Playable in the browser on itch.io */
+  browser: boolean;
+};
+
+export const games: Game[] = [
   {
-    title: "Opinion Exchange",
-    kind: "Django platform",
+    title: "Alice in TV-Land",
     description:
-      "A web platform for sharing and voting on programming opinions. Auth, email registration, tagging, AI-generated avatars, PostgreSQL, automated tests.",
-    tags: ["Django", "PostgreSQL", "Auth", "Testing"],
-    accent: "rose" as const,
-    href: null as string | null,
+      "A colourful pixel-art side-scroller with a female protagonist, built in Unity. Weird, feel-good and made for kids of all ages.",
+    url: "https://nerdess.itch.io/alice-in-tvland",
+    image: "/projects/games/alice-in-tvland.jpg",
+    tags: ["Platformer", "Unity", "Pixel art"],
+    browser: true,
+  },
+  {
+    title: "Virus Tag",
+    description:
+      "Online multiplayer tag inside a petri dish. Be the virus, infect the cells, don't get caught. Made with Unity.",
+    url: "https://nerdess.itch.io/virus-tag",
+    image: "/projects/games/virus-tag.jpg",
+    tags: ["Multiplayer", "Unity", "2D"],
+    browser: true,
+  },
+  {
+    title: "Anarchist",
+    description:
+      "A 2D strategy and simulation game about the 2023 Israeli protests against a corrupt government. Luck, crowds and conviction.",
+    url: "https://nerdess.itch.io/anarchist",
+    image: "/projects/games/anarchist.jpg",
+    tags: ["Strategy", "Simulation", "Windows"],
+    browser: false,
+  },
+  {
+    title: "Toasters Fight",
+    description:
+      "Kitchen appliances settle their differences the only way they know how. A fighting game prototype for Windows.",
+    url: "https://nerdess.itch.io/toasters-fight",
+    image: "/projects/games/toasters-fight.jpg",
+    tags: ["Fighting", "Windows"],
+    browser: false,
+  },
+  {
+    title: "Space Trek",
+    description:
+      "Your spaceship is trapped. Boost with Space, rotate with A and D, and reach the green platform. Built for Ludum Dare 49.",
+    url: "https://nerdess.itch.io/space-trek",
+    image: "/projects/games/space-trek.jpg",
+    tags: ["Ludum Dare 49", "Physics", "Windows"],
+    browser: false,
+  },
+];
+
+export const projects: Project[] = [
+  {
+    title: "Unpopular Opinions Court",
+    kind: "Django web app · live on Render",
+    description:
+      "A retro-terminal courtroom where unpopular opinions go on trial for 24 hours. Users defend or prosecute, verdicts land, and a Contrarian Score tracks who wins. Email-verified accounts, tag filtering, search, unique pixel-art avatars and a full test suite.",
+    tags: ["Django", "django-allauth", "SQLite", "Testing", "Render"],
+    accent: "rose",
+    live: "https://unpopular-court.onrender.com",
+    repo: "https://github.com/alisahoys/unpopular_court",
+    image: "/projects/unpopular-court.jpg",
+    status: "soon",
   },
   {
     title: "Car Rental API",
     kind: "REST API · team project",
     description:
       "A Django REST Framework service for a car rental business: CRUD, filtering, API tests and database integration, built collaboratively.",
-    tags: ["DRF", "REST", "Filtering", "CI"],
-    accent: "mauve" as const,
-    href: null as string | null,
+    tags: ["DRF", "REST", "Filtering", "Testing"],
+    accent: "mauve",
+    live: null,
+    repo: null,
+    image: null,
+    status: "soon",
   },
   {
     title: "Distributed Scraping Pipelines",
@@ -170,7 +253,10 @@ export const projects = [
     description:
       "Scrapy spiders coordinated over RabbitMQ, persisted to MySQL and shipped in Docker. The work that keeps data flowing reliably every day.",
     tags: ["Scrapy", "RabbitMQ", "Docker", "MySQL"],
-    accent: "gold" as const,
-    href: null as string | null,
+    accent: "gold",
+    live: null,
+    repo: null,
+    image: null,
+    status: "private",
   },
 ];

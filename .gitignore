@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# original photo uploads (processed version is public/alisa.jpg)
+/photos-original

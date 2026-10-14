@@ -11,6 +11,10 @@ npm run dev
 
 Then open http://localhost:3000.
 
+## Digital twin chat
+
+The "Ask my digital twin" chat is powered by OpenRouter. It needs an `OPENROUTER_API_KEY` in `.env` (never committed). Requests go through `src/app/api/chat/route.ts`, so the key stays server-side. The persona, facts and model list live in [`src/lib/twin.ts`](src/lib/twin.ts); the models are free-tier with automatic fallback.
+
 ## Edit content
 
 All copy lives in one file: [`src/data/profile.ts`](src/data/profile.ts).

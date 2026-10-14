@@ -4,11 +4,13 @@ import { useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { profile } from "@/data/profile";
+import { Avatar } from "./Avatar";
 
 const links = [
   { href: "#about", label: "About" },
   { href: "#journey", label: "Journey" },
   { href: "#portfolio", label: "Portfolio" },
+  { href: "#play", label: "Games" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -41,9 +43,12 @@ export function Nav() {
         }`}
       >
         <a href="#top" className="group flex items-center gap-3">
-          <span className="font-display grid h-9 w-9 place-items-center rounded-full bg-plum text-sm italic text-ivory transition-transform duration-500 group-hover:rotate-[-8deg]">
-            A
-          </span>
+          <Avatar
+            size="md"
+            ring
+            priority
+            className="transition-transform duration-500 group-hover:rotate-[-8deg]"
+          />
           <span className="font-display text-lg tracking-tight text-plum">
             {profile.name}
           </span>
